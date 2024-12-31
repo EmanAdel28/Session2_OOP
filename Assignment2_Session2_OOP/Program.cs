@@ -1,4 +1,6 @@
-﻿namespace Assignment2_Session2_OOP
+﻿using System.Drawing;
+
+namespace Assignment2_Session2_OOP
 {
     internal class Program
     {
@@ -14,11 +16,24 @@
             return result;
 
         }
+
+        static Person GetOldestPerson(Person[] persons)
+        {
+            Person oldest = persons[0];
+            for (int i = 1; i < persons.Length; i++)
+            {
+                if (persons[i].Age > oldest.Age)
+                {
+                    oldest = persons[i];
+                }
+            }
+            return oldest;
+        }
         static void Main(string[] args)
         {
             #region Part 01
 
-            #region part1 Q1
+            #region Part1 Q1
             //1.Create a struct called "Point" to represent a 2D point with properties "X" and "Y".
             //Write a C# program that takes two points as input from the user and calculates the distance between them.
 
@@ -67,7 +82,42 @@
             //Console.WriteLine(GetDestanceBetweenTwoPoints(P01, P02));
             #endregion
 
-           
+            #region Part1 Q2
+            // 2.Create a struct called "Person" with properties "Name" and "Age".
+            // Write a C# program that takes details of 3 persons as input from the user
+            // and displays the name and age of the oldest person.
+            const int size = 3;
+            Person[] persons = new Person[size];
+
+            for (int i = 0; i < size; i++)
+            {
+                Console.WriteLine($"Enter Name of Person {i + 1}:");
+                string name = Console.ReadLine();
+
+                Console.WriteLine($"Enter Age of Person {i + 1}:");
+                int age = int.Parse(Console.ReadLine());
+
+                persons[i] = new Person(name, age);
+            }
+
+            Console.WriteLine("\nDetails of Persons:");
+            foreach (var person in persons)
+            {
+                Console.WriteLine(person);
+            }
+
+            Person oldestPerson = GetOldestPerson(persons);
+            Console.WriteLine($"\nThe Oldest Person is: {oldestPerson}");
+
+
+
+
+
+
+
+            #endregion
+
+
 
             #endregion
         }
