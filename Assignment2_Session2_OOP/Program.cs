@@ -29,6 +29,12 @@
             Console.WriteLine(phoneBook["Amr"]);
             #endregion
 
+            #region Class
+            Car car = new Car(1,"BMW" , 390);
+            Console.WriteLine(car);
+
+            #endregion
+
         }
     }
 }
