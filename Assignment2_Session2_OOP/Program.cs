@@ -1,4 +1,7 @@
 ﻿using System.Drawing;
+using System.Reflection.Emit;
+using System.Security.Claims;
+using System.Security.Cryptography;
 
 namespace Assignment2_Session2_OOP
 {
@@ -29,6 +32,8 @@ namespace Assignment2_Session2_OOP
             }
             return oldest;
         }
+
+        
         static void Main(string[] args)
         {
             #region Part 01
@@ -86,32 +91,29 @@ namespace Assignment2_Session2_OOP
             // 2.Create a struct called "Person" with properties "Name" and "Age".
             // Write a C# program that takes details of 3 persons as input from the user
             // and displays the name and age of the oldest person.
-            const int size = 3;
-            Person[] persons = new Person[size];
 
-            for (int i = 0; i < size; i++)
-            {
-                Console.WriteLine($"Enter Name of Person {i + 1}:");
-                string name = Console.ReadLine();
+            //const int size = 3;
+            //Person[] persons = new Person[size];
 
-                Console.WriteLine($"Enter Age of Person {i + 1}:");
-                int age = int.Parse(Console.ReadLine());
+            //for (int i = 0; i < size; i++)
+            //{
+            //    Console.WriteLine($"Enter Name of Person {i + 1}:");
+            //    string name = Console.ReadLine();
 
-                persons[i] = new Person(name, age);
-            }
+            //    Console.WriteLine($"Enter Age of Person {i + 1}:");
+            //    int age = int.Parse(Console.ReadLine());
 
-            Console.WriteLine("\nDetails of Persons:");
-            foreach (var person in persons)
-            {
-                Console.WriteLine(person);
-            }
+            //    persons[i] = new Person(name, age);
+            //}
 
-            Person oldestPerson = GetOldestPerson(persons);
-            Console.WriteLine($"\nThe Oldest Person is: {oldestPerson}");
+            //Console.WriteLine("\nDetails of Persons:");
+            //foreach (var person in persons)
+            //{
+            //    Console.WriteLine(person);
+            //}
 
-
-
-
+            //Person oldestPerson = GetOldestPerson(persons);
+            //Console.WriteLine($"\nThe Oldest Person is: {oldestPerson}");
 
 
 
@@ -120,6 +122,69 @@ namespace Assignment2_Session2_OOP
 
 
             #endregion
-        }
+
+            #region Part 02
+
+            #region part2 Q1
+
+            //1.Design and implement a Class for the employees in a company:
+            // Notes:
+            //=> Employee is identified by an ID, Name, security level, salary, hire date and Gender.
+            //=> We need to restrict the Gender field to be only M or F[Male or Female]
+            //=> Assign the following security privileges to the employee(guest, Developer, secretary and DBA) in a form of Enum.
+            //=> We want to provide the Employee Class to represent Employee data in a string Form(override ToString()),
+            //display employee salary in a currency format. [Use String.Format() Function].
+            HiringDate hireDate1 = null;
+            HiringDate hireDate2 = null;
+            HiringDate hireDate3 = null;
+
+            try
+            {
+                 hireDate1 = new HiringDate(2, 1, 2024); // Invalid month
+                 hireDate2 = new HiringDate(20, 3, 2023); // Invalid month
+                 hireDate3 = new HiringDate(16, 5, 2022); // Invalid month
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                Console.WriteLine(ex.Message); // Will print: "Month must be between 1 and 12."
+            }
+
+            Employee[] employee = new Employee[3];
+
+            employee[0] =new Employee(1, "Eman", SecurityLevel.Developer, 20000, hireDate1, Gender.F);
+            employee[1] =new Employee(2, "Amira", SecurityLevel.Developer, 30000, hireDate2, Gender.F);
+            employee[2] =new Employee(3, "Nohammed", SecurityLevel.Developer, 40000, hireDate3, Gender.M);
+
+            //for(int i = 0; i < employee.Length; i++)
+            //{
+            //    Console.WriteLine(employee[i]);
+
+            //}
+
+            Console.WriteLine("Before Sorting:");
+            foreach (var emp in employee)
+            {
+                Console.WriteLine(emp);
+            }
+
+            // Sorting based on HireDate and counting boxing/unboxing
+            int boxingCount = 0;
+            Array.Sort(employee, (x, y) =>
+            {
+                boxingCount++; // Boxing during comparison
+                return x.HireDate.CompareTo(y.HireDate);
+            });
+
+            Console.WriteLine("\nAfter Sorting:");
+            foreach (var emp in employee)
+            {
+                Console.WriteLine(emp);
+            }
+
+            Console.WriteLine($"\nNumber of times boxing occurred during sorting: {boxingCount}");
+        
+        #endregion
+        #endregion
+    }
     }
 }
