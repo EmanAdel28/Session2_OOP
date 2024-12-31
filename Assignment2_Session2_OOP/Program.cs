@@ -20,6 +20,15 @@
 
             #endregion
 
+            #region Indexer
+            PhoneBook phoneBook = new PhoneBook();
+            phoneBook.AddPerson(0, "Ahmed", 123);
+            phoneBook.AddPerson(1, "Amr", 456);
+            phoneBook.AddPerson(2, "Aya", 789);
+
+            Console.WriteLine(phoneBook["Amr"]);
+            #endregion
+
         }
     }
 }
