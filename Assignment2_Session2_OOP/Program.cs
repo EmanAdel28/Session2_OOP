@@ -18,54 +18,56 @@
         {
             #region Part 01
 
-            #region Q1
+            #region part1 Q1
             //1.Create a struct called "Point" to represent a 2D point with properties "X" and "Y".
             //Write a C# program that takes two points as input from the user and calculates the distance between them.
 
-            bool Flag;
-            double x1 , x2 , y1 , y2;
+            //bool Flag;
+            //double x1 , x2 , y1 , y2;
 
-            Console.WriteLine("Enter Value of  X1 :");
-            do
-            {
-                Flag = double.TryParse(Console.ReadLine(), out  x1);
+            //Console.WriteLine("Enter Value of  X1 :");
+            //do
+            //{
+            //    Flag = double.TryParse(Console.ReadLine(), out  x1);
 
-            } while (!Flag);
+            //} while (!Flag);
 
-            Console.WriteLine("Enter Value of Y1:");
-            do
-            {
-                Flag = double.TryParse(Console.ReadLine(), out  y1);
+            //Console.WriteLine("Enter Value of Y1:");
+            //do
+            //{
+            //    Flag = double.TryParse(Console.ReadLine(), out  y1);
 
-            } while (!Flag);
+            //} while (!Flag);
 
 
-            Point P01 = new Point(x1, y1);
+            //Point P01 = new Point(x1, y1);
 
-            Console.Write("P1 : ");
-            Console.WriteLine(P01);
+            //Console.Write("P1 : ");
+            //Console.WriteLine(P01);
 
-            Console.WriteLine("Enter Value of  X2 :");
-            do
-            {
-                Flag = double.TryParse(Console.ReadLine(), out x2);
+            //Console.WriteLine("Enter Value of  X2 :");
+            //do
+            //{
+            //    Flag = double.TryParse(Console.ReadLine(), out x2);
 
-            } while (!Flag);
+            //} while (!Flag);
 
-            Console.WriteLine("Enter Value of Y2:");
-            do
-            {
-                Flag = double.TryParse(Console.ReadLine(), out y2);
+            //Console.WriteLine("Enter Value of Y2:");
+            //do
+            //{
+            //    Flag = double.TryParse(Console.ReadLine(), out y2);
 
-            } while (!Flag);
+            //} while (!Flag);
 
-            Point P02 = new Point(x2, y2);
-            Console.Write("P2 : ");
-            Console.WriteLine(P02);
+            //Point P02 = new Point(x2, y2);
+            //Console.Write("P2 : ");
+            //Console.WriteLine(P02);
 
-            Console.WriteLine("Distance Between Two Points");
-            Console.WriteLine(GetDestanceBetweenTwoPoints(P01, P02));
+            //Console.WriteLine("Distance Between Two Points");
+            //Console.WriteLine(GetDestanceBetweenTwoPoints(P01, P02));
             #endregion
+
+           
 
             #endregion
         }
